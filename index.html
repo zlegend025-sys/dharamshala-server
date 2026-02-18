@@ -62,7 +62,7 @@
         </div>
         <div class="status-box">
           <span class="status-label">Discord Members</span>
-          <span class="status-value">—</span>
+         <span class="status-value" id="discord-count">Loading…</span>
         </div>
       </div>
       <p class="status-note">
@@ -115,6 +115,23 @@
       }
     });
   </script>
+<script>
+  const DISCORD_SERVER_ID = "1411258319804563518";
+
+  fetch(`https://discord.com/api/guilds/${1411258319804563518}/widget.json`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.presence_count !== undefined) {
+        document.getElementById("discord-count").textContent =
+          data.presence_count + " online";
+      } else {
+        document.getElementById("discord-count").textContent = "Unavailable";
+      }
+    })
+    .catch(() => {
+      document.getElementById("discord-count").textContent = "Offline";
+    });
+</script>
 
 </body>
 
