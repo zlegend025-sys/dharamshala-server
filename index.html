@@ -8,153 +8,13 @@
   <!-- Minecraft font -->
   <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'VT323', monospace;
-      background: radial-gradient(circle at top, #2a2a2a, #0b0b0b);
-      color: #fff;
-    }
-
-    a {
-      color: #7CFF7C;
-      text-decoration: none;
-    }
-
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    .skin {
-      width: 140px;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin: 10px 0;
-    }
-
-    .tagline {
-      color: #bbb;
-      margin-bottom: 20px;
-    }
-
-    .welcome {
-      max-width: 600px;
-      margin: 0 auto 30px;
-      font-size: 1.2rem;
-      line-height: 1.6;
-    }
-
-    .buttons a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 22px;
-      border-radius: 6px;
-      background: #3aa655;
-      color: #000;
-      font-size: 1.1rem;
-    }
-
-    /* STATUS */
-    .status {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 40px 20px;
-    }
-
-    .card {
-      background: rgba(20,20,20,0.9);
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 380px;
-      width: 100%;
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
-    }
-
-    .card h2 {
-      margin-top: 0;
-      text-align: center;
-    }
-
-    /* DISCORD */
-    .discord iframe {
-      width: 100%;
-      height: 460px;
-      border: none;
-      border-radius: 8px;
-    }
-
-    /* INFO */
-    ul {
-      list-style: none;
-      padding: 0;
-      line-height: 1.8;
-    }
-
-    /* SCREENSHOTS */
-    .screenshots {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .gallery {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .gallery img {
-      width: 260px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    /* LIGHTBOX */
-    #lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.9);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-
-    #lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-    }
-
-    #lightbox span {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #aaa;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+  <!-- Animated Background -->
+  <canvas id="bg"></canvas>
 
   <!-- HERO -->
   <section class="hero">
@@ -165,8 +25,8 @@
 
     <p class="welcome">
       Welcome to Dharamshala SMP.<br>
-      A long-term survival server focused on community, trust, and chill gameplay.
-      Punjabi & English — both welcome.
+      A chill, long-term survival server built around trust,
+      community, and fair gameplay.
     </p>
 
     <div class="buttons">
@@ -179,7 +39,7 @@
   <section class="status">
 
     <div class="card discord">
-      <h2>Discord Status</h2>
+      <h2>Discord</h2>
       <iframe
         src="https://discord.com/widget?id=1411258319804563518&theme=dark"
         sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
@@ -190,8 +50,9 @@
       <h2>Server Info</h2>
       <ul>
         <li>Type: Survival SMP</li>
-        <li>Version: Java 1.21+</li>
+        <li>Version: Java 1.20+</li>
         <li>Region: India</li>
+        <li>Whitelist: Yes</li>
         <li>Uptime: 24/7</li>
       </ul>
     </div>
@@ -211,8 +72,8 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© Dharamshala SMP</p>
-    <a href="https://harshpreet.live" target="_blank">← Back to Portfolio</a>
+    © Dharamshala SMP ·
+    <a href="https://harshpreet.live" target="_blank">Back to Portfolio</a>
   </footer>
 
   <!-- LIGHTBOX -->
@@ -221,7 +82,9 @@
     <img src="">
   </div>
 
+  <!-- SCRIPTS -->
   <script>
+    /* LIGHTBOX */
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = lightbox.querySelector("img");
 
@@ -235,6 +98,47 @@
     lightbox.onclick = () => {
       lightbox.style.display = "none";
     };
+
+    /* BACKGROUND PARTICLES */
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    const particles = [];
+    for (let i = 0; i < 70; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 1,
+        vx: Math.random() * 0.3,
+        vy: Math.random() * 0.3
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "rgba(120,255,120,0.6)";
+
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y > canvas.height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animate);
+    }
+    animate();
   </script>
 
 </body>
