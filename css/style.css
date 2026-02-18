@@ -72,19 +72,6 @@ section h2 {
   text-align: center;
 }
 
-/* INFO */
-.info ul {
-  list-style: none;
-  padding: 0;
-  text-align: center;
-}
-
-.info li {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-  color: #cbd5e1;
-}
-
 /* RULES */
 .rules ol {
   color: #cbd5e1;
