@@ -121,15 +121,15 @@
   fetch(`https://discord.com/api/guilds/${1411258319804563518}/widget.json`)
     .then(res => res.json())
     .then(data => {
-      if (data.presence_count !== undefined) {
+      if (data.members && data.members.length) {
         document.getElementById("discord-count").textContent =
-          data.presence_count + " online";
+          data.members.length + " online";
       } else {
-        document.getElementById("discord-count").textContent = "Unavailable";
+        document.getElementById("discord-count").textContent = "0 online";
       }
     })
     .catch(() => {
-      document.getElementById("discord-count").textContent = "Offline";
+      document.getElementById("discord-count").textContent = "Unavailable";
     });
 </script>
 
