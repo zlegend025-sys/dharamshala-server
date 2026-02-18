@@ -192,3 +192,6 @@ footer a {
   color: #4ade80;
   cursor: pointer;
 }
+.status-value {
+  transition: color 0.3s ease;
+}
