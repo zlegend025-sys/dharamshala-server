@@ -1,84 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Dharamshala SMP</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Minecraft-style font -->
+  <!-- Minecraft font -->
   <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'VT323', monospace;
+      background: radial-gradient(circle at top, #2a2a2a, #0b0b0b);
+      color: #fff;
+    }
+
+    a {
+      color: #7CFF7C;
+      text-decoration: none;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .skin {
+      width: 140px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 10px 0;
+    }
+
+    .tagline {
+      color: #bbb;
+      margin-bottom: 20px;
+    }
+
+    .welcome {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 22px;
+      border-radius: 6px;
+      background: #3aa655;
+      color: #000;
+      font-size: 1.1rem;
+    }
+
+    /* STATUS */
+    .status {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: rgba(20,20,20,0.9);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    /* DISCORD */
+    .discord iframe {
+      width: 100%;
+      height: 460px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    /* INFO */
+    ul {
+      list-style: none;
+      padding: 0;
+      line-height: 1.8;
+    }
+
+    /* SCREENSHOTS */
+    .screenshots {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .gallery img {
+      width: 260px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* LIGHTBOX */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    #lightbox span {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #aaa;
+    }
+  </style>
 </head>
 
 <body>
 
   <!-- HERO -->
-  <header class="hero">
-    <div class="hero-inner">
-      <img
-        class="skin"
-        src="https://mc-heads.net/body/Harshpreet"
-        alt="Minecraft Skin"
-      />
+  <section class="hero">
+    <img class="skin" src="https://mc-heads.net/body/Harshpreet" alt="Minecraft Skin">
 
-      <h1>Dharamshala SMP</h1>
-      <p class="tagline">Whitelist-based Minecraft Survival SMP</p>
+    <h1>Dharamshala SMP</h1>
+    <p class="tagline">Whitelist-based Minecraft Survival SMP</p>
 
-      <p class="welcome">
-        Welcome! I’m the owner of Dharamshala SMP.<br>
-        This server is built for a chill, long-term survival experience
-        with a friendly Punjabi-first community.<br><br>
-        If you’re looking for a calm SMP with respect, trust, and fun —
-        you’re in the right place.
-      </p>
+    <p class="welcome">
+      Welcome to Dharamshala SMP.<br>
+      A long-term survival server focused on community, trust, and chill gameplay.
+      Punjabi & English — both welcome.
+    </p>
 
-      <div class="hero-buttons">
-        <a href="https://discord.gg/dharamshala" target="_blank" class="btn">Join Discord</a>
-        <a href="https://www.reddit.com/r/PanjabiGamers" target="_blank" class="btn">Reddit Community</a>
-      </div>
+    <div class="buttons">
+      <a href="https://discord.gg/dharamshala" target="_blank">Join Discord</a>
+      <a href="https://www.reddit.com/r/PanjabiGamers" target="_blank">Reddit Community</a>
     </div>
-  </header>
+  </section>
 
   <!-- STATUS -->
   <section class="status">
-    <div class="status-box">
+
+    <div class="card discord">
       <h2>Discord Status</h2>
       <iframe
         src="https://discord.com/widget?id=1411258319804563518&theme=dark"
-        width="100%"
-        height="90"
-        allowtransparency="true"
-        frameborder="0"
         sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
       </iframe>
     </div>
 
-    <div class="status-box">
+    <div class="card">
       <h2>Server Info</h2>
       <ul>
-        <li><strong>Type:</strong> Survival SMP</li>
-        <li><strong>Version:</strong> Java Edition (1.20+)</li>
-        <li><strong>Whitelist:</strong> Yes</li>
-        <li><strong>Region:</strong> India</li>
-        <li><strong>Uptime:</strong> 24/7</li>
+        <li>Type: Survival SMP</li>
+        <li>Version: Java 1.20+</li>
+        <li>Region: India</li>
+        <li>Whitelist: Yes</li>
+        <li>Uptime: 24/7</li>
       </ul>
     </div>
+
   </section>
 
   <!-- SCREENSHOTS -->
-  <main>
-    <section class="screenshots">
-      <h2>Server Screenshots</h2>
+  <section class="screenshots">
+    <h2>Server Screenshots</h2>
 
-      <div class="gallery">
-        <img src="images/ss1.jpg" alt="Screenshot 1">
-        <img src="images/ss2.jpg" alt="Screenshot 2">
-        <img src="images/ss3.jpg" alt="Screenshot 3">
-      </div>
-    </section>
-  </main>
+    <div class="gallery">
+      <img src="images/ss1.jpg">
+      <img src="images/ss2.jpg">
+      <img src="images/ss3.jpg">
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
@@ -88,32 +218,24 @@
 
   <!-- LIGHTBOX -->
   <div id="lightbox">
-    <span class="close">✕</span>
-    <img id="lightbox-img" src="" alt="Expanded screenshot">
+    <span>✕</span>
+    <img src="">
   </div>
 
-  <!-- JS -->
   <script>
     const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const closeBtn = document.querySelector(".close");
+    const lightboxImg = lightbox.querySelector("img");
 
     document.querySelectorAll(".gallery img").forEach(img => {
-      img.addEventListener("click", () => {
-        lightbox.classList.add("active");
+      img.onclick = () => {
+        lightbox.style.display = "flex";
         lightboxImg.src = img.src;
-      });
+      };
     });
 
-    closeBtn.addEventListener("click", () => {
-      lightbox.classList.remove("active");
-    });
-
-    lightbox.addEventListener("click", e => {
-      if (e.target === lightbox) {
-        lightbox.classList.remove("active");
-      }
-    });
+    lightbox.onclick = () => {
+      lightbox.style.display = "none";
+    };
   </script>
 
 </body>
